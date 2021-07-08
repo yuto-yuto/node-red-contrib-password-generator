@@ -1,0 +1,34 @@
+{
+  "name": "value-change-detector",
+  "version": "1.0.0",
+  "description": "send message only when the value changes",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && cp ./lib/*.html ./dist/",
+    "clean": "rm -rf ./dist",
+    "test": "mocha --recursive --require ts-node/register test/*.ts"
+  },
+  "keywords": [
+    "node-red",
+    "value-change"
+  ],
+  "author": "yuto-yuto",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^12.0.0",
+    "@types/node-red": "^1.1.1",
+    "@types/sinon": "^9.0.5",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "node-red-node-test-helper": "^0.2.6",
+    "sinon": "^9.0.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "fast-deep-equal": "^3.1.3",
+    "yutolity": "^1.0.0"
+  }
+}
