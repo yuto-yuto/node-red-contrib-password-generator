@@ -1,0 +1,9 @@
+version: "3.7"
+
+services: 
+    nodered:
+      image: nodered-update-detector
+      ports: 
+        - "1880:1880"
+      volumes: 
+        - ./flow:/data
