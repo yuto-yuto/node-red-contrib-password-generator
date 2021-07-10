@@ -1,7 +1,7 @@
 FROM nodered/node-red
 
 # error without this
-RUN mkdir -p ./password-generator/node_modules/
+# RUN mkdir -p ./password-generator/node_modules/
 
 COPY ../package.json ../package-lock.json ./password-generator/
 COPY ../dist ./password-generator/dist

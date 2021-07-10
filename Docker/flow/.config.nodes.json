@@ -397,15 +397,15 @@
         "version": "1.0.0",
         "local": false,
         "nodes": {
-            "valueChangeDetector": {
-                "name": "valueChangeDetector",
+            "passwordGeneratorNode": {
+                "name": "passwordGeneratorNode",
                 "types": [
                     "password-generator"
                 ],
                 "enabled": true,
                 "local": false,
                 "module": "node-red-contrib-password-generator",
-                "file": "/usr/src/node-red/node_modules/node-red-contrib-password-generator/dist/lib/ValueChangeDetectorNode.js"
+                "file": "/usr/src/node-red/node_modules/node-red-contrib-password-generator/dist/lib/PasswordGeneratorNode.js"
             }
         }
     }
