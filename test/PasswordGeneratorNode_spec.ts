@@ -20,30 +20,33 @@ describe("PasswordGeneratorNode", () => {
 
     const nodeId = "node-id";
     const outNodeId = "out-node-id";
-    const flows = [
-        {
-            id: nodeId,
-            type: "password-generator",
-            size: 10,
-            setTo: "payload.value",
-            name: "generator-name",
-            wires: [[outNodeId]]
-        },
-        {
-            id: outNodeId,
-            type: "helper",
-        }
-    ];
-
+    function createFlow(args?: { size?: number, setTo?: string }) {
+        return [
+            {
+                id: nodeId,
+                type: "password-generator",
+                size: args?.size || 10,
+                setTo: args?.setTo,
+                name: "generator-name",
+                wires: [[outNodeId]]
+            },
+            {
+                id: outNodeId,
+                type: "helper",
+            }
+        ];
+    }
     it("should be loaded", (done) => {
-        helper.load([valueChangeNode], flows, () => {
+        const flow = createFlow();
+        helper.load([valueChangeNode], flow, () => {
             const node = helper.getNode(nodeId);
             expect(node.name).to.equal("generator-name");
             done();
         }).catch(done);
     });
     it("should set value to the property specified in setTo", (done) => {
-        helper.load([valueChangeNode], flows, () => {
+        const flow = createFlow({ setTo: "payload.value" });
+        helper.load([valueChangeNode], flow, () => {
             const node = helper.getNode(nodeId);
             const outNode = helper.getNode(outNodeId);
             outNode.on("input", (msg: any) => {
@@ -51,6 +54,32 @@ describe("PasswordGeneratorNode", () => {
                 done();
             });
             node.receive({ payload: 1 });
+
+        }).catch(done);
+    });
+    it("should set value to msg.payload when neither setTo nor msg.to is set ", (done) => {
+        const flow = createFlow();
+        helper.load([valueChangeNode], flow, () => {
+            const node = helper.getNode(nodeId);
+            const outNode = helper.getNode(outNodeId);
+            outNode.on("input", (msg: any) => {
+                expect(msg.payload).not.to.be.undefined;
+                done();
+            });
+            node.receive({ payload: 1 });
+
+        }).catch(done);
+    });
+    it("should use msg.to if it is set even if setTo is set", (done) => {
+        const flow = createFlow({ setTo: "payload.value" });
+        helper.load([valueChangeNode], flow, () => {
+            const node = helper.getNode(nodeId);
+            const outNode = helper.getNode(outNodeId);
+            outNode.on("input", (msg: any) => {
+                expect(msg.hoge.hoge).not.to.be.undefined;
+                done();
+            });
+            node.receive({ payload: 1, to: "hoge.hoge" } as any);
 
         }).catch(done);
     });
