@@ -13,7 +13,6 @@
   "keywords": [
     "node-red",
     "password-generator",
-    "rbe",
     "crypto"
   ],
   "repository": {
