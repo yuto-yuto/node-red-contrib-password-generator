@@ -16,6 +16,10 @@
     "rbe",
     "crypto"
   ],
+  "repository": {
+    "url": "https://github.com/yuto-yuto/node-red-contrib-password-generator",
+    "type": "git"
+  },
   "node-red": {
     "nodes": {
       "passwordGeneratorNode": "./dist/lib/PasswordGeneratorNode.js"
