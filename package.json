@@ -21,7 +21,7 @@
       "passwordGeneratorNode": "./dist/lib/PasswordGeneratorNode.js"
     }
   },
-  "author": "yuto-yuto",
+  "author": "yuto.technicalfeeder",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.21",
