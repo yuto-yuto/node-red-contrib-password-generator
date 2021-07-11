@@ -15,7 +15,7 @@ export = (RED: nodered.NodeAPI): void => {
             RED.nodes.createNode(this, config);
 
             this.on("input", async (msg: any, send, done) => {
-                const password = await generatePassword(config.size);
+                const password = await generatePassword(config.length);
                 const valueSetPath = msg.to || config.setTo || "payload";
                 msg = yutolity.setValue(msg, valueSetPath, password);
                 send(msg);

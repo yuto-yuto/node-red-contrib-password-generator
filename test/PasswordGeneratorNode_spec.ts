@@ -1,6 +1,5 @@
 import "mocha";
 import { expect } from "chai";
-// import * as helper from "node-red-node-test-helper";
 import helper = require("node-red-node-test-helper");
 
 import valueChangeNode = require("../lib/PasswordGeneratorNode");
@@ -20,12 +19,12 @@ describe("PasswordGeneratorNode", () => {
 
     const nodeId = "node-id";
     const outNodeId = "out-node-id";
-    function createFlow(args?: { size?: number, setTo?: string }) {
+    function createFlow(args?: { length?: number, setTo?: string }) {
         return [
             {
                 id: nodeId,
                 type: "password-generator",
-                size: args?.size || 10,
+                length: args?.length || 10,
                 setTo: args?.setTo,
                 name: "generator-name",
                 wires: [[outNodeId]]

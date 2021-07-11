@@ -2,12 +2,12 @@ import * as nodered from "node-red";
 
 export interface PasswordGeneratorNodeDef
     extends nodered.NodeDef {
-    size: number;
+    length: number;
     setTo?: string;
 }
 
 export interface PasswordGeneratorNodeProperties
     extends nodered.EditorNodeProperties {
-    size: number;
+    length: number;
     setTo?: string;
 }

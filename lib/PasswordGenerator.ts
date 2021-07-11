@@ -8,15 +8,15 @@ const AsciiRange = {
     max: 126,
 }
 
-export async function generatePassword(size: number): Promise<string> {
+export async function generatePassword(length: number): Promise<string> {
     let result = "";
     while (true) {
-        const bytes = await promisify(crypto.randomBytes)(size * 2);
+        const bytes = await promisify(crypto.randomBytes)(length * 2);
         const byteArray = Array.from(bytes);
         const filtered = byteArray.filter(isInAsciiRange);
         result += String.fromCharCode(...filtered);
-        if (result.length >= size) {
-            result = result.slice(0, size);
+        if (result.length >= length) {
+            result = result.slice(0, length);
             break;
         }
     }
